@@ -10,7 +10,6 @@ function App() {
     <div className="Alarm-app">
       <HomePage /> 
       {/* <NewAlarm /> */}
-      {/* <Tunes /> */}
       {/* <EditAlarm alarmId={87647} /> */}
     </div>
   );
