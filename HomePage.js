@@ -1,4 +1,3 @@
-import './App.css';
 import React, { useState } from 'react';
 //import RingtonePopup from "./RingtonePopup.js";
 import SoundPopup from "./SoundPopup.js";
@@ -164,20 +163,6 @@ function HomePage() {
   function ClickAddAlarm() {
     //takes you to add alarm screen, that screen should return the alarm object
   }
-
-  function Times() {
-    var mydate = new Date();
-    var year = mydate.getFullYear();
-    var month = mydate.getMonth() + 1; //month starts from 0
-    var day = mydate.getDate();
-
-    var displayDate = year + '/' + month + '/' + day;
-    console.log(displayDate)
-    return(
-      <p>{displayDate}</p>
-    )
-  }
-
 
   function Header() {
     return(
