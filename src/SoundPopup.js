@@ -1,6 +1,6 @@
 import React, {useState}  from 'react';
-import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
+// import Popup from 'reactjs-popup';
+// import 'reactjs-popup/dist/index.css';
 
 function uploadMusic() {
     //returns array of music available for ringtone after reading from file, is used for "tones" array
@@ -76,12 +76,13 @@ function SoundPopup() {
     }
 
     return (
-        <Popup trigger={<button>Choose Sound</button>} position="right center">
-            <div>
-            <DisplayChoices />
-            <ShowChoice />
-            </div>
-        </Popup>
+        // <Popup trigger={<button>Choose Sound</button>} position="right center">
+        //     <div>
+        //     <DisplayChoices />
+        //     <ShowChoice />
+        //     </div>
+        // </Popup>
+        null
     );
 }
 

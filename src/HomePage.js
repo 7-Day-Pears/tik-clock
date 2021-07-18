@@ -170,7 +170,6 @@ function HomePage() {
   
   // ** NOT FINISHED CLICKADDALARM()
   function ClickAddAlarm() {
-    <NewAlarm /> 
     // ** switch screens to AddAlarm.js 
   }
 
@@ -188,7 +187,7 @@ function HomePage() {
     return(
       <div>
       <DisplayAlarms />
-      <SoundPopup />
+      {/* <SoundPopup /> */}
       </div>
     );
   }
@@ -201,7 +200,7 @@ function HomePage() {
     <div>
       <Header />
       <Body />
-      <Times />
+      {/* <Times /> */}
     </div>
   );
 }
