@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 //import RingtonePopup from "./RingtonePopup.js";
 import SoundPopup from "./SoundPopup.js";
+import NewAlarm from "./NewAlarm.js";
 
 //need to map
 //e.preventDefault not to reload 
@@ -19,7 +20,7 @@ function HomePage() {
   const date = new Date();
   const AM = "am";
   const PM = "pm";
-  // change alarms to local storage --> collecting info from local storage 
+  // ** change alarms to local storage --> collecting info from local storage 
   const [alarms, setAlarms] = useState([
     {id: 1, nm: 'hey', time: "10:00pm", power: "off", days: []}, 
     {id: 2, nm: 'there', time: "11:00am", power: "off", days: ["Mon", "Wed"]},
@@ -27,17 +28,21 @@ function HomePage() {
   ]);
 
   function UploadAlarm() {
-    //should upload alarms, then call setAlarmsArray
+    // ** collect all the alarms in local storage (for loop, check if type === alarm)
+    // copy Form.js creatSongList function 
   }
   
   //sets alarm array to what has been inputed into it
   //should code check for all alarm info being present
+
+  // ** not necessary SETALARMARRAY 
   function SetAlarmArray(arr) {
     setAlarms(arr);
     AlarmSort();
   }
 
   function DisplayAlarms() {
+    // for alarms.map, all the k.name will have to change (id, label, power, repeat, snooze, snoozeSound, snoozeTime, sound, time, type)
     return(
       <div>
         {alarms.map((k) => ( //k is an alarms object
@@ -92,7 +97,7 @@ function HomePage() {
   }
   
   function PowerClick(id, e) {
-    AlarmSort();
+    AlarmSort(); // ** check where to call ALARMSORT
     var ind = alarms.findIndex((i) => i.id === id);
    
     let alrm = alarms[ind];  //set variable to refer to alarm in use
@@ -106,6 +111,7 @@ function HomePage() {
     }
 
     alrm.power = pow;
+    // ** add a change for localstorage as well --> take inspiration from Form.js (doing a lot of similar things)
     setAlarms(
       [...alarms.slice(0, ind), alrm, ...alarms.slice(ind+1)]
     )
@@ -161,9 +167,11 @@ function HomePage() {
     console.log(small);
     return small;
   }
-
+  
+  // ** NOT FINISHED CLICKADDALARM()
   function ClickAddAlarm() {
-    //takes you to add alarm screen, that screen should return the alarm object
+    <NewAlarm /> 
+    // ** switch screens to AddAlarm.js 
   }
 
   function Header() {
