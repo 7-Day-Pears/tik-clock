@@ -6,6 +6,7 @@ import SoundPopup from "./SoundPopup.js";
 //need to map
 //e.preventDefault not to reload 
 
+// ** NOT FINISHED GETTIME
 function GetTime() {
   //should get current device time
   return(
@@ -19,6 +20,7 @@ function HomePage() {
   const date = new Date();
   const AM = "am";
   const PM = "pm";
+  // change alarms to local storage --> collecting info from local storage 
   const [alarms, setAlarms] = useState([
     {id: 1, nm: 'hey', time: "10:00pm", power: "off", days: []}, 
     {id: 2, nm: 'there', time: "11:00am", power: "off", days: ["Mon", "Wed"]},
