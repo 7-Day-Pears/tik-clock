@@ -4,6 +4,7 @@ import SoundPopup from "./SoundPopup.js";
 import NewAlarm from "./NewAlarm.js";
 import TimeWork from './TimeWork'
 import Time from './edit-alarm/Time.js';
+import Header from './edit-alarm/Header.js';
 
 //need to map
 //e.preventDefault not to reload 
@@ -25,7 +26,7 @@ function GetTime() {
   )
 }
 
-function HomePage() {
+function HomePage({onClick}) {
   const date = new Date();
   const AM = "am";
   const PM = "pm";
@@ -177,13 +178,8 @@ function HomePage() {
     console.log(small);
     return small;
   }
-  
-  // ** NOT FINISHED CLICKADDALARM()
-  function ClickAddAlarm() {
-    // ** switch screens to AddAlarm.js 
-  }
 
-  function Header() {
+  function Header({ClickAddAlarm}) {
     return(
       <div id="header-allAlarms">
         <h1>Alarm</h1>
@@ -193,12 +189,10 @@ function HomePage() {
     );
   }
 
-  // ** make sure that SoundPopup works 
   function Body() {
     return(
       <div>
       <DisplayAlarms />
-      {/* <SoundPopup /> */}
       </div>
     );
   }
@@ -211,7 +205,7 @@ function HomePage() {
   // ** make sure that Times works 
   return (
     <div>
-      <Header />
+      <Header ClickAddAlarm={() => onClick('New Alarm')} />
       <Body />
       <TimeWork />
     </div>

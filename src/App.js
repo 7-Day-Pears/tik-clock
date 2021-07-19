@@ -4,13 +4,21 @@ import Tunes from "./Tunes";
 import NewAlarm from "./NewAlarm";
 
 import HomePage from './HomePage';
+import { useState } from 'react/cjs/react.development';
 
 // ** in the whole app, add a few buttons to allow the user to move between different screens (tunes or alarm)
 
 function App() {
+  const [currentView, setCurrentView] = useState('Homepage')
+
+  const toggle =(page) => {
+    setCurrentView(page) 
+    console.log(currentView)
+  }
+
   return (
     <div className="Alarm-app">
-      <HomePage /> 
+      {currentView === "Homepage" ? <HomePage onClick={(page) => toggle(page)} /> : <NewAlarm onClick={(page) => toggle(page)} /> }
       {/* <NewAlarm /> */}
       {/* <EditAlarm alarmId={87647} /> */}
     </div>
