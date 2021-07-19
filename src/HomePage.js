@@ -2,9 +2,18 @@ import React, { useState } from 'react';
 //import RingtonePopup from "./RingtonePopup.js";
 import SoundPopup from "./SoundPopup.js";
 import NewAlarm from "./NewAlarm.js";
+import TimeWork from './TimeWork'
+import Time from './edit-alarm/Time.js';
 
 //need to map
 //e.preventDefault not to reload 
+
+/* 
+** add edit alarm --> when you click on the alarm info, leads to edit alarm 
+maybe have an edit alarm button that makes the alarms edit-able 
+when clicking on the edit alarm, there should be a delete button 
+add an option called sound --> the sound for the alarm (ex: Radar )
+*/
 
 // ** NOT FINISHED GETTIME
 function GetTime() {
@@ -103,6 +112,7 @@ function HomePage() {
     let alrm = alarms[ind];  //set variable to refer to alarm in use
 
     //set pow to be opposite of alarm power
+    // ** make sure that the on and off work on the button (there are some issues)
     var pow = alrm.power;
     if (pow === "on") {
       pow = "off";
@@ -183,6 +193,7 @@ function HomePage() {
     );
   }
 
+  // ** make sure that SoundPopup works 
   function Body() {
     return(
       <div>
@@ -192,15 +203,17 @@ function HomePage() {
     );
   }
 
+  // ** not sure if this is necessary 
   function addAlarm(alarm) {
     setAlarms([alarm, ...alarms]);
   }
 
+  // ** make sure that Times works 
   return (
     <div>
       <Header />
       <Body />
-      {/* <Times /> */}
+      <TimeWork />
     </div>
   );
 }

@@ -5,6 +5,8 @@ import NewAlarm from "./NewAlarm";
 
 import HomePage from './HomePage';
 
+// ** in the whole app, add a few buttons to allow the user to move between different screens (tunes or alarm)
+
 function App() {
   return (
     <div className="Alarm-app">

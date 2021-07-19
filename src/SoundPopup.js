@@ -1,7 +1,10 @@
+// ** not sure if this file is necessary 
+
 import React, {useState}  from 'react';
 // import Popup from 'reactjs-popup';
 // import 'reactjs-popup/dist/index.css';
 
+// ** uses a function similar to one in Form.js --> makes a list of all the sounds 
 function uploadMusic() {
     //returns array of music available for ringtone after reading from file, is used for "tones" array
 }
