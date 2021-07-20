@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 //import RingtonePopup from "./RingtonePopup.js";
 import SoundPopup from "./SoundPopup.js";
 import NewAlarm from "./NewAlarm.js";
+import { Redirect } from 'react-router';
 
 //need to map
 //e.preventDefault not to reload 
@@ -170,7 +171,12 @@ function HomePage() {
   
   // ** NOT FINISHED CLICKADDALARM()
   function ClickAddAlarm() {
+    return(
+      <div>
     <NewAlarm /> 
+    <Redirect to='./NewAlarm.js'/>
+    </div>
+    );
     // ** switch screens to AddAlarm.js 
   }
 
@@ -201,7 +207,6 @@ function HomePage() {
     <div>
       <Header />
       <Body />
-      <Times />
     </div>
   );
 }
