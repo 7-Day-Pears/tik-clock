@@ -71,14 +71,14 @@ function LocalStorage({onClick}) {
 
     // ** change the default time maybe 
 
-    const createBtnClicked = (e) => {
+    const createBtnClicked = (onClick) => {
         submitNewAlarm()
-        e.preventDefault()
+        onClick('Homepage')
     }
 
     return(
         <form>
-            <Header headerName="New Alarm" btnName="Create" back={() => onClick('Homepage')} clicked={submitNewAlarm}/>
+            <Header headerName="New Alarm" btnName="Create" back={() => onClick('Homepage')} clicked={() => createBtnClicked(onClick)}/>
             <Time hour={timeData.time.hour} minute={timeData.time.minute} check={timeData.time.check} onChange={onTimeChange} />
             <Days days={daysData.data.days} check={daysData.data.check} onChange={onDaysChange} /> 
             <Label label={labelData.input.label} onChange={onLabelChange}/>

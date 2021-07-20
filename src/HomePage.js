@@ -30,26 +30,33 @@ function HomePage({onClick}) {
   const date = new Date();
   const AM = "am";
   const PM = "pm";
-  // ** change alarms to local storage --> collecting info from local storage 
-  const [alarms, setAlarms] = useState([
-    {id: 1, nm: 'hey', time: "10:00pm", power: "off", days: []}, 
-    {id: 2, nm: 'there', time: "11:00am", power: "off", days: ["Mon", "Wed"]},
-    {id: 3, nm: 'webd', time: "11:30am", power: "on", days: ["Thu"]}
-  ]);
 
   function UploadAlarm() {
+    var arrayOfValues = [];
+    for(var i in localStorage){
+        if(localStorage.hasOwnProperty(i)){
+            if(JSON.parse(localStorage[i])['type'] === "alarm") {
+                arrayOfValues.push(JSON.parse(localStorage[i]));
+            }
+        }
+    }
+    return (
+        arrayOfValues
+    )
     // ** collect all the alarms in local storage (for loop, check if type === alarm)
     // copy Form.js creatSongList function 
   }
+
+  const [alarms, setAlarms] = useState(UploadAlarm())
   
   //sets alarm array to what has been inputed into it
   //should code check for all alarm info being present
 
   // ** not necessary SETALARMARRAY 
-  function SetAlarmArray(arr) {
-    setAlarms(arr);
-    AlarmSort();
-  }
+  // function SetAlarmArray(arr) {
+  //   setAlarms(arr);
+  //   AlarmSort();
+  // }
 
   function DisplayAlarms() {
     // for alarms.map, all the k.name will have to change (id, label, power, repeat, snooze, snoozeSound, snoozeTime, sound, time, type)
@@ -57,7 +64,7 @@ function HomePage({onClick}) {
       <div>
         {alarms.map((k) => ( //k is an alarms object
           <div>
-            <div id="alarmName">Alarm Name: {k.nm}</div>
+            <div id="alarmName">Alarm Name: {k.label}</div>
             <div id="alarmTime">Time: {k.time}</div>
             <div id="alarmDays">{DaysDisplay(k.id)}</div>
             <button id="alarmPower"
@@ -76,8 +83,9 @@ function HomePage({onClick}) {
   //displays days for which alarm rings
   function DaysDisplay(id) {
     var ind = alarms.findIndex((i) => i.id === id);
-    var days = alarms[ind].days;
+    var days = alarms[ind].repeat;
     var display = '';
+    var days_lst = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
     var curTime; //obtain current time -> how much to update, when -> hopefully not consuming
 
     //if alarm set to ring once, then displays today/tomorrow depending on current time
@@ -91,11 +99,9 @@ function HomePage({onClick}) {
     } 
     //if set to ring repeatedly, then displays days of ringing
     else {
-      for(let i = 0; i < days.length; i++) {
-        display += days[i];
-        if (i !== days.length -1) {
-          display += "  "
-        }
+      for(var i in days) {
+        let n = parseInt(days[i])
+        display += days_lst[n-1] + " ";
       }
     }
 
@@ -109,22 +115,18 @@ function HomePage({onClick}) {
   function PowerClick(id, e) {
     AlarmSort(); // ** check where to call ALARMSORT
     var ind = alarms.findIndex((i) => i.id === id);
-   
-    let alrm = alarms[ind];  //set variable to refer to alarm in use
+    let s = JSON.parse(localStorage.getItem(id))
 
-    //set pow to be opposite of alarm power
-    // ** make sure that the on and off work on the button (there are some issues)
-    var pow = alrm.power;
-    if (pow === "on") {
-      pow = "off";
+    if (s['power'] === "on") {
+      s['power'] = "off";
     } else {
-      pow = "on"
+      s['power'] = "on"
     }
 
-    alrm.power = pow;
-    // ** add a change for localstorage as well --> take inspiration from Form.js (doing a lot of similar things)
+    localStorage.setItem(id, JSON.stringify(s))
+
     setAlarms(
-      [...alarms.slice(0, ind), alrm, ...alarms.slice(ind+1)]
+      [...alarms.slice(0, ind), s, ...alarms.slice(ind+1)]
     )
     e.preventDefault();
   }
@@ -198,9 +200,9 @@ function HomePage({onClick}) {
   }
 
   // ** not sure if this is necessary 
-  function addAlarm(alarm) {
-    setAlarms([alarm, ...alarms]);
-  }
+  // function addAlarm(alarm) {
+  //   setAlarms([alarm, ...alarms]);
+  // }
 
   // ** make sure that Times works 
   return (
