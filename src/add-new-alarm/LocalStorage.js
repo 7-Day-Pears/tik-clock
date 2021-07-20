@@ -8,7 +8,7 @@ import Label from '../edit-alarm/Label';
 import Sound from '../edit-alarm/Sound';
 import Snooze from '../edit-alarm/Snooze';
 
-function LocalStorage() {
+function LocalStorage({onClick}) {
     const [timeData, setTime] = useState({time: {hour: 0, minute: 0, check: false}})
     const onTimeChange = useCallback(t => setTime({time: t}), [])
 
@@ -71,14 +71,14 @@ function LocalStorage() {
 
     // ** change the default time maybe 
 
-    const createBtnClicked = (e) => {
+    const createBtnClicked = (onClick) => {
         submitNewAlarm()
-        e.preventDefault()
+        onClick('Homepage')
     }
 
     return(
         <form>
-            <Header headerName="New Alarm" btnName="Create" clicked={submitNewAlarm}/>
+            <Header headerName="New Alarm" btnName="Create" back={() => onClick('Homepage')} clicked={() => createBtnClicked(onClick)}/>
             <Time hour={timeData.time.hour} minute={timeData.time.minute} check={timeData.time.check} onChange={onTimeChange} />
             <Days days={daysData.data.days} check={daysData.data.check} onChange={onDaysChange} /> 
             <Label label={labelData.input.label} onChange={onLabelChange}/>
