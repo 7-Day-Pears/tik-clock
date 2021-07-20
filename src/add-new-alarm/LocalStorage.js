@@ -8,8 +8,14 @@ import Label from '../edit-alarm/Label';
 import Sound from '../edit-alarm/Sound';
 import Snooze from '../edit-alarm/Snooze';
 
+import {GetTime} from '../HomePage';
+
 function LocalStorage({onClick}) {
-    const [timeData, setTime] = useState({time: {hour: 0, minute: 0, check: false}})
+    const currentTime = GetTime()
+    const currentHour = (currentTime.slice(0, 2) == 0 ? 12 : (currentTime.slice(0, 2) > 12 ? currentTime.slice(0, 2) - 12 : currentTime.slice(0, 2)))
+    const currentMinute = currentTime.slice(3, 5)
+    const currentCheck = currentTime.slice(0, 2) > 11 ? true : false
+    const [timeData, setTime] = useState({time: {hour: currentHour, minute: currentMinute, check: currentCheck}})
     const onTimeChange = useCallback(t => setTime({time: t}), [])
 
     const [daysData, setDays] = useState({data: {days: [], check: false}})
@@ -68,8 +74,6 @@ function LocalStorage({onClick}) {
         }
         localStorage.setItem(id, JSON.stringify(value))
     }
-
-    // ** change the default time maybe 
 
     const createBtnClicked = (onClick) => {
         submitNewAlarm()

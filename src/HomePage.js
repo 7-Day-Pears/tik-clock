@@ -18,12 +18,11 @@ add an option called sound --> the sound for the alarm (ex: Radar )
 
 // ** NOT FINISHED GETTIME
 function GetTime() {
+  var currentData = new Date()
+  var currentHour = currentData.getHours()
+  var currentMinute = currentData.getMinutes()
   //should get current device time
-  return(
-    <div>
-      07:00am
-    </div>
-  )
+  return(currentHour + ":" + currentMinute)
 }
 
 function HomePage({onClick}) {
@@ -217,3 +216,4 @@ function HomePage({onClick}) {
 //getItem setItem local storage
 //jSON stringify jSON.parse()
 export default HomePage;
+export {GetTime};
