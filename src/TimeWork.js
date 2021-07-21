@@ -3,6 +3,7 @@ import React from 'react';
 
 function TimeWork(alarmsId) {
   var alarm = null;
+  var alt = 120000;
 
   function GetAlarmTime(id) {
     for(var i in localStorage){
@@ -91,10 +92,11 @@ function CallCompare(interval) {
   } while (on);
 }
 
+CallCompare(alt);
+
 return (
   <div>
-  <GetCurTime />
-  <GetAlarmTime />
+
   </div>
 );
 }
