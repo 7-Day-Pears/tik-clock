@@ -16,14 +16,12 @@ when clicking on the edit alarm, there should be a delete button
 add an option called sound --> the sound for the alarm (ex: Radar )
 */
 
-// ** NOT FINISHED GETTIME
 function GetTime() {
-  //should get current device time
-  return(
-    <div>
-      07:00am
-    </div>
-  )
+  var currentData = new Date()
+  var currentHour = currentData.getHours()
+  var currentMinute = currentData.getMinutes()
+
+  return(currentHour + ":" + currentMinute)
 }
 
 function HomePage({onClick}) {
@@ -43,8 +41,6 @@ function HomePage({onClick}) {
     return (
         arrayOfValues
     )
-    // ** collect all the alarms in local storage (for loop, check if type === alarm)
-    // copy Form.js creatSongList function 
   }
 
   const [alarms, setAlarms] = useState(UploadAlarm())
@@ -217,3 +213,4 @@ function HomePage({onClick}) {
 //getItem setItem local storage
 //jSON stringify jSON.parse()
 export default HomePage;
+export {GetTime};

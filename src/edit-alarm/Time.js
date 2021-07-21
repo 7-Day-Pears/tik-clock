@@ -3,13 +3,13 @@ import { useState, useEffect } from 'react/cjs/react.development';
 
 function Time({hour, minute, check, onChange}) {
     const [hrInput, setHr] = useState(hour)
-    const [minInput, setMin] = useState(minute)
+    const [minInput, setMin] = useState(minute === 0 ? "00" : minute)
     const [checkInput, setCheck] = useState(check) 
 
     useEffect(() => onChange({hour: hrInput, minute: minInput, check: checkInput}), [hrInput, minInput, checkInput, onChange])
 
     const checkHr = (e) => {
-        if (isNaN(e.target.value)) {
+        if (isNaN(e.target.value) & e.target.value !== "") {
             console.log('not a number')
         } else {
             if (e.target.value > 12 || e.target.value < 1 & e.target.value !== "") {
@@ -21,7 +21,7 @@ function Time({hour, minute, check, onChange}) {
     }
 
     const checkMin = (e) => {
-        if (isNaN(e.target.value)) {
+        if (isNaN(e.target.value) & e.target.value !== "") {
             console.log('not a number')
         } else {
             if (e.target.value > 59 || e.target.value < 0) {
