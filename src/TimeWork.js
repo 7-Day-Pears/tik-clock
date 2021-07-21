@@ -92,11 +92,11 @@ function CallCompare(interval) {
   } while (on);
 }
 
-CallCompare(alt);
+//CallCompare(alt);
 
 return (
   <div>
-
+    {function() {if (localStorage.length != 0) {CallCompare(alt)}}}
   </div>
 );
 }
