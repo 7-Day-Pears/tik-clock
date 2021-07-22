@@ -7,11 +7,12 @@ import Ringers from "./tunes/Ringers";
 
 
 function Tunes() {
+  // const defaultSong = 
   return (
     <form className="edit-alarm">
         <TunesHeader />
-        <Ringers />
         <UploadTunes /> 
+        <Ringers />
         <Header /> 
         <Form />
     </form>

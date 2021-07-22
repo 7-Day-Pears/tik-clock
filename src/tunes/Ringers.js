@@ -10,7 +10,7 @@ function Ringers() {
         {id: 1000006, type: 'defaultRingers', songName: 'Ripping Pants'},
         {id: 1000007, type: 'defaultRingers', songName: 'Nuts Crushed'},
         {id: 1000008, type: 'defaultRingers', songName: 'Agony in a Bottle'},
-        {id: 1000009, type: 'defaultRingers', songName: 'Toenails Dragging On The Floor'},
+        {id: 1000009, type: 'defaultRingers', songName: 'Toenails Being Clipped'},
         {id: 1000010, type: 'defaultRingers', songName: 'ASMR Nail Tapping'}
     ]
 
@@ -20,22 +20,8 @@ function Ringers() {
         }
     }
 
-    const showRingers = () => {
-        return(
-            <div>
-                <h3>Ringtones</h3>
-                {ringers.map((ringer) => (
-                    <input 
-                        type='text' 
-                        value={ringer['songName']}
-                        readOnly
-                    /> 
-                ))}
-            </div>
-        )
-    }
-
     setRingers()
+
     return(
         <div>
             <h3>Ringtones</h3>
