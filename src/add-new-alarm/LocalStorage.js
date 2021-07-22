@@ -24,10 +24,10 @@ function LocalStorage({onClick}) {
     const [labelData, setLabel] = useState({input: {label: 'Alarm'}})
     const onLabelChange = useCallback(l => setLabel({input: l}), [])
 
-    const [soundData, setSound] = useState({sounds: {soundId: ''}})
+    const [soundData, setSound] = useState({sounds: {soundId: 1000003}})
     const onSoundChange = useCallback(sc => setSound({sounds: sc}), [])
 
-    const [snoozeData, setSnooze] = useState({snooze: {check: true, minute: 5, sound: ''}})
+    const [snoozeData, setSnooze] = useState({snooze: {check: true, minute: 5, sound: 1000003}})
     const onSnoozeChange = useCallback(s => setSnooze({snooze: s}), [])
 
     const time = () => {

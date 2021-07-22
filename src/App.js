@@ -22,8 +22,7 @@ function App() {
       {currentView === "Homepage" ? <HomePage onClick={(page) => toggle(page)} /> : <NewAlarm onClick={(page) => toggle(page)} /> }
       {/* <NewAlarm /> */}
       {/* <EditAlarm alarmId={87647} /> */}
-      <Tunes />
-      {/* <Ringers /> */}
+      {/* <Tunes /> */}
     </div>
   );
 }
