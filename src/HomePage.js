@@ -28,8 +28,6 @@ function GetTime() {
 function HomePage({onClick}) {
 
   const date = new Date();
-  const AM = "am";
-  const PM = "pm";
 
   function UploadAlarm() {
     var arrayOfValues = [];
@@ -158,13 +156,7 @@ function HomePage({onClick}) {
   //compares two alarms which are am-pm version clock, returns the smaller of the two. might recode to 24-hour.
   function CompareAlarms(alm1, alm2) {
     let small = null;
-    if (alm1.toString().substring(5) !== alm2.toString().substring(5)) {
-      if (alm1.toString().substring(5) === PM) {
-        small = alm2;
-      } else {
-        small = alm1;
-      }
-    } else {
+    
       if (alm1.toString().substring(0,2) > alm2.toString().substring(0,2)) {
         small = alm2;
       } else if (alm2.toString().substring(0,2) > alm1.toString().substring(0,2)) {
@@ -176,8 +168,6 @@ function HomePage({onClick}) {
           small = alm1;
         }
       }
-    }
-    console.log(small);
     return small;
   }
 
@@ -207,7 +197,7 @@ function HomePage({onClick}) {
   // ** make sure that Times works 
   return (
     <div>
-      <Header ClickAddAlarm={() => onClick('New Alarm')} />
+      <Header ClickAddAlarm={() => {onClick('New Alarm'); AlarmSort()}} />
       <Body />
       {/* <TimeWork /> */}
     </div>
