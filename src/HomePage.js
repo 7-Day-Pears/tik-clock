@@ -26,6 +26,7 @@ function GetTime() {
 }
 
 function HomePage({onClick}) {
+
   const date = new Date();
   const AM = "am";
   const PM = "pm";
@@ -61,11 +62,11 @@ function HomePage({onClick}) {
       <div>
         {alarms.map((k) => ( //k is an alarms object
           <div>
-            {/* <button id="editAlarm" onClick= {EditAlarm(k.id)}> */}
+            <button id="editAlarm" onClick={() => onClick('Edit Alarm')} >
             <div id="alarmName">Alarm Name: {k.label}</div>
             <div id="alarmTime">Time: {k.time}</div>
             <div id="alarmDays">{DaysDisplay(k.id)}</div>
-            {/* </button> */}
+            </button>
             <button id="alarmPower"
               key={k.id}
               onClick={(e) => PowerClick(k.id, e)}
