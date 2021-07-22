@@ -5,6 +5,7 @@ import NewAlarm from "./NewAlarm.js";
 import TimeWork from './TimeWork'
 import Time from './edit-alarm/Time.js';
 import Header from './edit-alarm/Header.js';
+import EditAlarm from './EditAlarm.js';
 
 //need to map
 //e.preventDefault not to reload 
@@ -60,9 +61,11 @@ function HomePage({onClick}) {
       <div>
         {alarms.map((k) => ( //k is an alarms object
           <div>
+            {/* <button id="editAlarm" onClick= {EditAlarm(k.id)}> */}
             <div id="alarmName">Alarm Name: {k.label}</div>
             <div id="alarmTime">Time: {k.time}</div>
             <div id="alarmDays">{DaysDisplay(k.id)}</div>
+            {/* </button> */}
             <button id="alarmPower"
               key={k.id}
               onClick={(e) => PowerClick(k.id, e)}
@@ -205,7 +208,7 @@ function HomePage({onClick}) {
     <div>
       <Header ClickAddAlarm={() => onClick('New Alarm')} />
       <Body />
-      <TimeWork />
+      {/* <TimeWork /> */}
     </div>
   );
 }
