@@ -17,10 +17,26 @@ function App() {
     console.log(currentView)
   }
 
+  function changeCurView() {
+    if (currentView === "Homepage") {
+      return(
+      <HomePage onClick={(page) => toggle(page)} />
+      )
+    }
+    else if (currentView === "New Alarm") {
+      return(
+      <NewAlarm onClick={(page) => toggle(page)} />
+      )
+    } else if (currentView === "Edit Alarm") {
+      return(
+      <EditAlarm onClick={(page) => toggle(page)} />
+      )
+    }
+  }
+
   return (
     <div className="Alarm-app">
-      {currentView === "Homepage" ? <HomePage onClick={(page) => toggle(page)} /> : <NewAlarm onClick={(page) => toggle(page)} /> }
-      
+      {changeCurView()}
       {/* <NewAlarm /> */}
       {/* <EditAlarm alarmId={87647} /> */}
       {/* <Tunes /> */}
