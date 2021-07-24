@@ -5,6 +5,7 @@ import NewAlarm from "./NewAlarm.js";
 import TimeWork from './TimeWork'
 import Time from './edit-alarm/Time.js';
 import Header from './edit-alarm/Header.js';
+import EditAlarm from './EditAlarm.js';
 
 //need to map
 //e.preventDefault not to reload 
@@ -25,9 +26,8 @@ function GetTime() {
 }
 
 function HomePage({onClick}) {
+
   const date = new Date();
-  const AM = "am";
-  const PM = "pm";
 
   function UploadAlarm() {
     var arrayOfValues = [];
@@ -60,9 +60,11 @@ function HomePage({onClick}) {
       <div>
         {alarms.map((k) => ( //k is an alarms object
           <div>
+            <button id="editAlarm" onClick={() => onClick('Edit Alarm')} >
             <div id="alarmName">Alarm Name: {k.label}</div>
             <div id="alarmTime">Time: {k.time}</div>
             <div id="alarmDays">{DaysDisplay(k.id)}</div>
+            </button>
             <button id="alarmPower"
               key={k.id}
               onClick={(e) => PowerClick(k.id, e)}
@@ -154,13 +156,7 @@ function HomePage({onClick}) {
   //compares two alarms which are am-pm version clock, returns the smaller of the two. might recode to 24-hour.
   function CompareAlarms(alm1, alm2) {
     let small = null;
-    if (alm1.toString().substring(5) !== alm2.toString().substring(5)) {
-      if (alm1.toString().substring(5) === PM) {
-        small = alm2;
-      } else {
-        small = alm1;
-      }
-    } else {
+    
       if (alm1.toString().substring(0,2) > alm2.toString().substring(0,2)) {
         small = alm2;
       } else if (alm2.toString().substring(0,2) > alm1.toString().substring(0,2)) {
@@ -172,8 +168,6 @@ function HomePage({onClick}) {
           small = alm1;
         }
       }
-    }
-    console.log(small);
     return small;
   }
 
@@ -203,9 +197,9 @@ function HomePage({onClick}) {
   // ** make sure that Times works 
   return (
     <div>
-      <Header ClickAddAlarm={() => onClick('New Alarm')} />
+      <Header ClickAddAlarm={() => {onClick('New Alarm'); AlarmSort()}} />
       <Body />
-      <TimeWork />
+      {/* <TimeWork /> */}
     </div>
   );
 }

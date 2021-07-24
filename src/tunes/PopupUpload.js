@@ -5,7 +5,8 @@ import './PopupUpload.css';
 function PopupUpload (props) {
     const [input, setInput] = useState('');
 
-    const [fileName, setFileName] = useState('zoon_2.mp3')
+    const [fileName, setFileName] = useState('')
+    const [url, setURL] = useState('')
 
     const updateValue = (e) => {
         setInput(e.target.value)
@@ -13,35 +14,33 @@ function PopupUpload (props) {
 
     const getFileName = (e) => {
         setFileName(e.target.files[0].name)
+        var url = URL.createObjectURL(e.target.files[0])
+        // console.log(url)
+        setURL(url)
     }
 
     const UseAudio = (url) => {
         let audio = new Audio(url)
-        audio.play()
-        // const [playing, setPlaying] = useState(false);
+        const [playing, setPlaying] = useState(false);
         
-        // const toggle = (e) => {
-        //     setPlaying(!playing)
-        //     e.preventDefault()
-        // };
+        const toggle = () => {
+            setPlaying(!playing)
+        };
 
-        // useEffect(() => {
-        //     playing ? audio.play() : audio.pause()
-        // }, [playing])
-
-        // return toggle
+        useEffect(() => {
+            playing ? audio.play() : audio.pause()
+        }, [playing])
     }
 
     const playing = (e) => {
-        var str = fileName
+        var str = url
         // var toggle = UseAudio(str)
-        // toggle(e)
         UseAudio(str)
 
         // console.log(str)
         // const audio = new Audio("<" + str + ">")
         // audio.play()
-        // e.preventDefault()
+        e.preventDefault()
     }
 
     // const [playing, toggle] = UseAudio(fileName);

@@ -18,11 +18,11 @@ function App() {
   }
 
   return (
-    <div className="Alarm-app">
-      {/* {currentView === "Homepage" ? <HomePage onClick={(page) => toggle(page)} /> : <NewAlarm onClick={(page) => toggle(page)} /> } */}
+    <div className="Alarm-app">   
+      {currentView === "Homepage" ? <HomePage onClick={(page) => toggle(page)} /> : <NewAlarm onClick={(page) => toggle(page)} /> }   
       {/* <NewAlarm /> */}
       {/* <EditAlarm alarmId={87647} /> */}
-      <Tunes />
+      {/* <Tunes /> */}
     </div>
   );
 }
