@@ -7,7 +7,7 @@ import Label from "./edit-alarm/Label";
 import Sound from "./edit-alarm/Sound";
 import Snooze from "./edit-alarm/Snooze";
 
-function EditAlarm(alarmId) {
+function EditAlarm(alarmId, {onClick}) {
   const alarm = JSON.parse(localStorage[alarmId.alarmId])
 
   const getTimeData = () => {
@@ -73,7 +73,7 @@ function EditAlarm(alarmId) {
 
   return (
     <form className="edit-alarm">
-      <Header headerName='Edit Alarm' btnName='Save' clicked={saveEdits} />
+      <Header headerName='Edit Alarm' btnName='Save' back={() => onClick('Homepage')} clicked={saveEdits} />
       <Time hour={timeData.time.hour} minute={timeData.time.minute} check={timeData.time.check} onChange={onTimeChange} />
       <Days days={daysData.data.days} check={daysData.data.check} onChange={onDaysChange} />
       <Label label={labelData.input.label} onChange={onLabelChange} />

@@ -47,13 +47,7 @@ function HomePage({onClick}) {
   
   //sets alarm array to what has been inputed into it
   //should code check for all alarm info being present
-
-  // ** not necessary SETALARMARRAY 
-  // function SetAlarmArray(arr) {
-  //   setAlarms(arr);
-  //   AlarmSort();
-  // }
-
+  
   function DisplayAlarms() {
     // for alarms.map, all the k.name will have to change (id, label, power, repeat, snooze, snoozeSound, snoozeTime, sound, time, type)
     return(
@@ -73,7 +67,8 @@ function HomePage({onClick}) {
             </button>
           </div>
          ))
-        }
+        } 
+        {AlarmSort()}
       </div>
     );
   }
@@ -111,7 +106,6 @@ function HomePage({onClick}) {
   }
   
   function PowerClick(id, e) {
-    AlarmSort(); // ** check where to call ALARMSORT
     var ind = alarms.findIndex((i) => i.id === id);
     let s = JSON.parse(localStorage.getItem(id))
 
@@ -197,7 +191,7 @@ function HomePage({onClick}) {
   // ** make sure that Times works 
   return (
     <div>
-      <Header ClickAddAlarm={() => {onClick('New Alarm'); AlarmSort()}} />
+      <Header ClickAddAlarm={() => {onClick('New Alarm')}} />
       <Body />
       {/* <TimeWork /> */}
     </div>
