@@ -7,8 +7,20 @@ import Label from "./edit-alarm/Label";
 import Sound from "./edit-alarm/Sound";
 import Snooze from "./edit-alarm/Snooze";
 
-function EditAlarm(alarmId, {onClick}) {
-  const alarm = JSON.parse(localStorage[alarmId.alarmId])
+function EditAlarm({onClick}) {
+  //get alarmId out of local storage
+  var alarmId;
+  for(var i in localStorage){
+    if(localStorage.hasOwnProperty(i)){
+      if(JSON.parse(localStorage[i])['type'] === "edit") {
+        alarmId = JSON.parse(localStorage[i])['id'];
+        alarmId = JSON.parse(alarmId);
+      }
+    }
+  }
+  console.log(alarmId);
+
+  const alarm = JSON.parse(localStorage[alarmId])
 
   const getTimeData = () => {
     let t = alarm['time']

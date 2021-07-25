@@ -3,7 +3,7 @@ import React from 'react';
 
 function TimeWork(alarmsId) {
   var alarm = null;
-  var alt = 120000;
+  var alt = 120000; //default time interval
 
   function GetAlarmTime(id) {
     for(var i in localStorage){
@@ -21,14 +21,18 @@ function TimeWork(alarmsId) {
 
 function GetCurDate() {
   var mydate = new Date();
-    var year = mydate.getFullYear();
-    var month = mydate.getMonth() + 1; //month starts from 0
-    var day = mydate.getDate();
-    var displayDate = year + '/' + month + '/' + day;
 
-    return(
-      <p>{displayDate}</p>
-    );
+  //don't really need this stuff, unless want to display it
+  var year = mydate.getFullYear();
+  var month = mydate.getMonth() + 1; //month starts from 0
+  var daydate = mydate.getDate();
+  var displayDate = year + '/' + month + '/' + daydate;
+
+  var day = mydate.getDay(); //need 
+
+  return(
+    <p>{displayDate}</p>
+  );
 }
 
 function GetCurTime() {

@@ -47,14 +47,21 @@ function HomePage({onClick}) {
   
   //sets alarm array to what has been inputed into it
   //should code check for all alarm info being present
+
+  localStorage.setItem(0, JSON.stringify({id:0, type:'edit'}))
   
+  function EditingA(a) {
+    localStorage.setItem(0, JSON.stringify({type:'edit', id:a}));
+    onClick('Edit Alarm');
+  }
+
   function DisplayAlarms() {
     // for alarms.map, all the k.name will have to change (id, label, power, repeat, snooze, snoozeSound, snoozeTime, sound, time, type)
     return(
       <div>
         {alarms.map((k) => ( //k is an alarms object
           <div>
-            <button id="editAlarm" onClick={() => onClick('Edit Alarm')} >
+            <button id="editAlarm" onClick={() => EditingA(k.id)} >
             <div id="alarmName">Alarm Name: {k.label}</div>
             <div id="alarmTime">Time: {k.time}</div>
             <div id="alarmDays">{DaysDisplay(k.id)}</div>
