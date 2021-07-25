@@ -12,7 +12,7 @@ function Time({hour, minute, check, onChange}) {
         if (isNaN(e.target.value) & e.target.value !== "") {
             console.log('not a number')
         } else {
-            if (e.target.value > 12 || e.target.value < 1 & e.target.value !== "") {
+            if (e.target.value > 12 || e.target.value < 0 & e.target.value !== "") {
                 console.log('not an hour available')
             } else {
                 setHr(e.target.value)

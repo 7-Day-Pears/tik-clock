@@ -10,13 +10,6 @@ import EditAlarm from './EditAlarm.js';
 //need to map
 //e.preventDefault not to reload 
 
-/* 
-** add edit alarm --> when you click on the alarm info, leads to edit alarm 
-maybe have an edit alarm button that makes the alarms edit-able 
-when clicking on the edit alarm, there should be a delete button 
-add an option called sound --> the sound for the alarm (ex: Radar )
-*/
-
 function GetTime() {
   var currentData = new Date()
   var currentHour = currentData.getHours()
@@ -72,6 +65,7 @@ function HomePage({onClick}) {
             > 
               {k.power}
             </button>
+            <TimeWork id={k.id}/>
           </div>
          ))
         } 
@@ -172,6 +166,15 @@ function HomePage({onClick}) {
     return small;
   }
 
+  function Navigation() {
+    return(
+      <div>
+        <button id="home" onClick={() => onClick('Homepage')}>Home</button>
+        <button id="tunes" onClick={() => onClick('Tunes')}>Tunes</button>
+      </div>
+    );
+  }
+
   function Header({ClickAddAlarm}) {
     return(
       <div id="header-allAlarms">
@@ -186,6 +189,7 @@ function HomePage({onClick}) {
     return(
       <div>
       <DisplayAlarms />
+      <Navigation />
       </div>
     );
   }

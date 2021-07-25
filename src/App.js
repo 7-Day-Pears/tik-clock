@@ -6,6 +6,7 @@ import NewAlarm from "./NewAlarm";
 import HomePage from './HomePage';
 import Ringers from './tunes/Ringers'
 import { useState } from 'react/cjs/react.development';
+import TimeWork from './TimeWork';
 
 // ** in the whole app, add a few buttons to allow the user to move between different screens (tunes or alarm)
 

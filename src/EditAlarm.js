@@ -79,7 +79,7 @@ function EditAlarm({onClick}) {
     alarm['sound'] = soundData.sounds.soundId
     alarm['repeat'] = daysData.data.days
 
-    localStorage.setItem(alarmId.alarmId, JSON.stringify(alarm))
+    localStorage.setItem(alarmId, JSON.stringify(alarm))
   }
 
 
