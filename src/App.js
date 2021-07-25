@@ -35,16 +35,11 @@ function App() {
   }
 
   return (
-<<<<<<< HEAD
-    <div className="Alarm-app">   
-      {currentView === "Homepage" ? <HomePage onClick={(page) => toggle(page)} /> : <NewAlarm onClick={(page) => toggle(page)} /> }   
-=======
     <div className="Alarm-app">
-      {changeCurView()}
->>>>>>> cd246bd00c9db30feb1be6699fe67eec8798a7cf
+      {/* {changeCurView()} */}
       {/* <NewAlarm /> */}
       {/* <EditAlarm alarmId={87647} /> */}
-      {/* <Tunes /> */}
+      <Tunes />
     </div>
   );
 }
