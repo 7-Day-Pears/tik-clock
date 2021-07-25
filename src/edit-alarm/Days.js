@@ -3,21 +3,21 @@ import React, { useState, useEffect } from 'react'
 function Days({days, check, onChange}) {
     // all the days are clicked as default
     const [btnLists, setList] = useState((check === true?[
-        { id: 1, dayName: "Monday", isClicked: (days.indexOf(1) > -1?true:false) }, 
-        { id: 2, dayName: "Tuesday", isClicked: (days.indexOf(2) > -1?true:false) }, 
-        { id: 3, dayName: "Wednesday", isClicked: (days.indexOf(3) > -1?true:false) }, 
-        { id: 4, dayName: "Thursday", isClicked: (days.indexOf(4) > -1?true:false) }, 
-        { id: 5, dayName: "Friday", isClicked: (days.indexOf(5) > -1?true:false) }, 
-        { id: 6, dayName: "Saturday", isClicked: (days.indexOf(6) > -1?true:false) }, 
-        { id: 7, dayName: "Sunday", isClicked: (days.indexOf(7) > -1?true:false) }
+        { id: 0, dayName: "Monday", isClicked: (days.indexOf(0) > -1?true:false) }, 
+        { id: 1, dayName: "Tuesday", isClicked: (days.indexOf(1) > -1?true:false) }, 
+        { id: 2, dayName: "Wednesday", isClicked: (days.indexOf(2) > -1?true:false) }, 
+        { id: 3, dayName: "Thursday", isClicked: (days.indexOf(3) > -1?true:false) }, 
+        { id: 4, dayName: "Friday", isClicked: (days.indexOf(4) > -1?true:false) }, 
+        { id: 5, dayName: "Saturday", isClicked: (days.indexOf(5) > -1?true:false) }, 
+        { id: 6, dayName: "Sunday", isClicked: (days.indexOf(6) > -1?true:false) }
     ]:[
-        { id: 1, dayName: "Monday", isClicked: true }, 
-        { id: 2, dayName: "Tuesday", isClicked: true }, 
-        { id: 3, dayName: "Wednesday", isClicked: true }, 
-        { id: 4, dayName: "Thursday", isClicked: true }, 
-        { id: 5, dayName: "Friday", isClicked: true }, 
-        { id: 6, dayName: "Saturday", isClicked: true }, 
-        { id: 7, dayName: "Sunday", isClicked: true }
+        { id: 0, dayName: "Monday", isClicked: true }, 
+        { id: 1, dayName: "Tuesday", isClicked: true }, 
+        { id: 2, dayName: "Wednesday", isClicked: true }, 
+        { id: 3, dayName: "Thursday", isClicked: true }, 
+        { id: 4, dayName: "Friday", isClicked: true }, 
+        { id: 5, dayName: "Saturday", isClicked: true }, 
+        { id: 6, dayName: "Sunday", isClicked: true }
     ]));
 
     // ** cannot make the repeat days show on btnList
