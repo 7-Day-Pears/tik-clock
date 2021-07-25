@@ -14,7 +14,7 @@ function UploadTunes() {
         <form className="upload-header">
             <text>Upload</text>
             <button className="upload-btn" onClick={(e) => openPopup(e)}>add new song</button>
-            <PopupUpload trigger={popUp} showPopup={openPopup}></PopupUpload>
+            <PopupUpload trigger={popUp} showPopup={(e) => openPopup(e)}></PopupUpload>
         </form>
     )
 }
