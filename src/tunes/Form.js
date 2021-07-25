@@ -1,6 +1,7 @@
 import React from 'react';
-import { useState } from 'react/cjs/react.development';
+import { useState, useMemo, useEffect } from 'react/cjs/react.development';
 import Popup from './Popup';
+import { playPause } from './PopupUpload'
 
 
 function Form() {
@@ -19,6 +20,9 @@ function Form() {
     }
 
     const [songList, setSongList] = useState(creatSongList());
+
+    const [url, setURL] = useState('')
+    const audio = useMemo(() => new Audio(url), [url])
 
     // changes the value of the 'edit button' depending on the mode (edit or save)
     const changeValue = (id, readOnly, preName, e) => {
@@ -102,9 +106,32 @@ function Form() {
         } 
     }
 
-    const playBackSong = () => {
-        // function that takes the id and song with that id in db 
-        // then plays the song 
+    const playPause = () => {
+
+    }
+
+    const PlayBackSong = (id, e) => {
+        setURL(JSON.parse(localStorage[id])['URL'].slice(5, -1))
+
+        const index = songList.findIndex(x => x.id === id);
+        let s = JSON.parse(localStorage.getItem(id))
+        let value = s['playing']
+
+        s['playing'] = !value
+
+        localStorage.setItem(id, JSON.stringify(s))
+
+        setSongList([
+            ...songList.slice(0, index), 
+            s, 
+            ...songList.slice(index+1)
+        ])
+
+        playPause(s['playing'], audio)
+
+        e.preventDefault()
+
+        console.log('test', s['URL'])
     }
 
     const printSongs = () => {
@@ -112,7 +139,7 @@ function Form() {
             <form className="saved-songs-list">
                 {songList.map((song) => (
                     <div>
-                        {/* button called play back */}
+                        <button onClick={(e) => PlayBackSong(song.id, e)}>{song.playing ? '||' : '>'}</button>
                         <input type='text' 
                             className='song-name' 
                             value={song.readOnly ? (song.songName) : (song.preName)}

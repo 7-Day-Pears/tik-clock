@@ -36,14 +36,10 @@ function App() {
 
   return (
     <div className="Alarm-app">
-<<<<<<< HEAD
-      {/* {changeCurView()} */}
-=======
       {changeCurView()}
->>>>>>> f2e324f54d791e7a63f0132db8cc9f879b07e33a
       {/* <NewAlarm /> */}
       {/* <EditAlarm alarmId={87647} /> */}
-      <Tunes />
+      {/* <Tunes /> */}
     </div>
   );
 }
